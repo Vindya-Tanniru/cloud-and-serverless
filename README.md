@@ -1,1 +1,31 @@
-# cloud-and-serverless
+                                       Automate Sending Text SMS Notification to Phone Number Using Amazon SNS and AWS Lambda
+->Log in to the aws management console
+->Search S3 bucket and click on create bucket
+->Create bucket with a unique name
+->Now search for lambda in the search bar 
+->click create function and name the function 
+->Select the runtime as "python 3.9" 
+-> Set the change default execution role as "Use and existing role" and select the existing role(ETL LAMBDA)
+->Click create function
+->Now go to configuration and click on general configuration  and click on edit
+-> Change the memory to 1024mb and ephemeral storage to 1024mb and time out to 15 min to 0 sec.
+->Click on save
+->Click on Trigger and add trigger 
+->Select source and select s3 and select the bucket arn which is created in the start.
+-> Give event type as "All object create events".
+->Click the checkbox and click on add.
+->Select the code and give the respective code and click on deploy changes.
+-> Now type in "SNS" in the search bar and click create topic
+->In details select standard and give the topic name and click on create.
+-> Copy the topic arn and paste in the code (topic arn="")
+->click on text messaging in the left bar and select add phonenumber
+->Select the country code and give the phone number and select the language.
+->After the entering the phone number a verificaton code will be sent to the given phone number.
+->Enter the respective otp and click on verify phone number.
+->After the phone verified, click on subscription and click create.
+->Enter the topic arn and select the protocol as "SMS"
+->Select the endpoint which is the given number which is verified.
+->Click on create subscription.
+->Now go to the bucket list and click on created bucket.
+->Now click on upload files and upload any file in the respected bucket.
+->A message will be sent to the number that "file have been uploaded to the s3 bucket".
